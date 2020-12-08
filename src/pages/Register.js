@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import "../App.css";
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
+import { Grid } from "@material-ui/core";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { purple, deepPurple} from '@material-ui/core/colors';
+import { motion } from "framer-motion"
+
 
 const Register = () => {
 
@@ -41,6 +45,16 @@ const Register = () => {
     /* kutsutaan serviceä */
   };
 
+  const ColorButton = withStyles((theme) => ({
+    root: {
+      color: theme.palette.getContrastText(purple[400]),
+      backgroundColor: purple[400],
+      '&:hover': {
+        backgroundColor: purple[800],
+      },
+    },
+  }))(Button);
+
   const useStyles = makeStyles((theme) => ({
     paper: {
       marginTop: theme.spacing(8),
@@ -50,8 +64,11 @@ const Register = () => {
     },
     avatar: {
       margin: theme.spacing(1),
-      backgroundColor: theme.palette.primary.main,
     },
+    purple: {
+        color: theme.palette.getContrastText(deepPurple[500]),
+        backgroundColor: deepPurple[500],
+      },
     form: {
       width: '100%', // Fix IE 11 issue.
       marginTop: theme.spacing(1),
@@ -69,12 +86,7 @@ const Register = () => {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        {/* <div class="custom-shape-divider-top-1606840004">
-        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" class="shape-fill"></path>
-        </svg>
-        </div> */}
-        <Avatar className={classes.avatar}>
+        <Avatar className={classes.avatar} className={classes.purple}>
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
@@ -129,15 +141,26 @@ const Register = () => {
             value={passwordAgain}
             onChange={(e) => handlePasswordAgain(e)}
           />
-          <Button
-            type="submit"
-            fullWidth
-            variant="outlined"
-            color="primary"
-            className={classes.submit}
-          >
+          <Grid container spacing={10}>
+            <Grid item xs="6">
+             <motion.div
+             whileHover={{ scale: 1.4 }}
+             whileTap={{ scale: 1.2}}>
+          <ColorButton variant="contained" color="primary" className={classes.margin}>
             Rekisteröidy
-          </Button>
+      </ColorButton>
+      </motion.div>
+      </Grid>
+      <Grid item xs="6">
+      <motion.div
+             whileHover={{ scale: 1.4 }}
+             whileTap={{ scale: 1.2}}> 
+      <ColorButton variant="contained" color="primary" className={classes.margin}>
+            Peruuta
+      </ColorButton>
+      </motion.div>
+      </Grid>
+      </Grid>
         </form>
       </div>
     </Container>
