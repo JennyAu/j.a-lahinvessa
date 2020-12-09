@@ -12,8 +12,7 @@ const Navigation = () => {
       width: '100%',
       height: '8vh',
       padding: '0 .5rem 0 .5rem',
-      backgroundColor: '#85cad4',
-      zIndex: 1,
+      //backgroundColor: '#85cad4',
       opacity: '.85',
     },
     menuIconContainer: {
@@ -25,7 +24,7 @@ const Navigation = () => {
       // border: '1px solid red',
     },
     menuIcon: {
-      color: '#fff',
+      color: '#C0467B',
     },
   };
 

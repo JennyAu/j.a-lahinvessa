@@ -7,11 +7,12 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles, createMuiTheme } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { purple, deepPurple} from '@material-ui/core/colors';
+import { purple, deepPurple, pink} from '@material-ui/core/colors';
 import { motion } from "framer-motion"
-
+import logo from "../assets/logo.png"
+import { ThemeProvider } from "@material-ui/styles";
 
 const Register = () => {
 
@@ -45,6 +46,17 @@ const Register = () => {
     /* kutsutaan serviceä */
   };
 
+/*   const theme = createMuiTheme({
+    palette: {
+      primary: {
+        main: purple[500],
+      },
+      secondary: {
+        main: pink[500],
+      },
+    },
+  }); */
+
   const ColorButton = withStyles((theme) => ({
     root: {
       color: theme.palette.getContrastText(purple[400]),
@@ -62,19 +74,18 @@ const Register = () => {
       flexDirection: 'column',
       alignItems: 'center',
     },
-    avatar: {
+   /*  avatar: {
       margin: theme.spacing(1),
-    },
-    purple: {
-        color: theme.palette.getContrastText(deepPurple[500]),
-        backgroundColor: deepPurple[500],
-      },
+    }, */
     form: {
-      width: '100%', // Fix IE 11 issue.
+      width: '100%', 
       marginTop: theme.spacing(1),
     },
     submit: {
       margin: theme.spacing(3, 0, 2),
+    },
+    margin: {
+      marginTop: theme.spacing(2)
     },
   }));
 
@@ -85,17 +96,22 @@ const Register = () => {
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar} className={classes.purple}>
+      <motion.div 
+      animate={{ y: 30 }}
+      transition={{ delay: 0.2 }}
+      className={classes.paper}>
+      {/* <Avatar className={classes.avatar} className={classes.purple}>
           <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
+        </Avatar> */}
+        <img src={logo} alt="Logo" height={60} wigth={60} className={classes.margin}/>
+        <Typography component="h1" variant="h5" className={classes.margin}>
           Rekisteröidy
         </Typography>
         <form onSubmit={register} className={classes.form} noValidate>
           <TextField
             variant="outlined"
             margin="normal"
+            size="small"
             required
             fullWidth
             id="email"
@@ -105,9 +121,10 @@ const Register = () => {
             value={username}
             onChange={(e) => handleUsername(e)}
           />
-          <TextField
+          <TextField 
             variant="outlined"
             margin="normal"
+            size="small"
             required
             fullWidth
             id="email"
@@ -120,6 +137,7 @@ const Register = () => {
           <TextField
             variant="outlined"
             margin="normal"
+            size="small"
             required
             fullWidth
             name="password"
@@ -132,6 +150,8 @@ const Register = () => {
           <TextField
             variant="outlined"
             margin="normal"
+            size="small"
+            color="primary"
             required
             fullWidth
             name="password"
@@ -144,25 +164,25 @@ const Register = () => {
           <Grid container spacing={10}>
             <Grid item xs="6">
              <motion.div
-             whileHover={{ scale: 1.4 }}
+             whileHover={{ scale: 1.2 }}
              whileTap={{ scale: 1.2}}>
-          <ColorButton variant="contained" color="primary" className={classes.margin}>
+          <ColorButton variant="contained" className={classes.margin}>
             Rekisteröidy
       </ColorButton>
       </motion.div>
       </Grid>
       <Grid item xs="6">
       <motion.div
-             whileHover={{ scale: 1.4 }}
+             whileHover={{ scale: 1.2 }}
              whileTap={{ scale: 1.2}}> 
-      <ColorButton variant="contained" color="primary" className={classes.margin}>
+      <ColorButton variant="contained" className={classes.margin}>
             Peruuta
       </ColorButton>
       </motion.div>
       </Grid>
       </Grid>
         </form>
-      </div>
+      </motion.div>
     </Container>
   );
 };

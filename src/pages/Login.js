@@ -12,6 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import { createMuiTheme, withStyles, makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { motion } from "framer-motion"
+import logo from "../assets/logo.png"
 
 const Login = () => {
 
@@ -78,60 +79,61 @@ const Login = () => {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <motion.div className={classes.paper}
-      animate={{ y: 70 }}
-      transition= {{ delay: 0.2 }}>
+        animate={{ y: 70 }}
+        transition={{ delay: 0.2 }}>
         {/* <div class="custom-shape-divider-top-1606840004">
       <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
         <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" class="shape-fill"></path>
       </svg>
     </div> */}
-   
-        <Avatar className={classes.avatar} className={classes.purple}>         
-          <LockOutlinedIcon />         
-        </Avatar>      
+{/* 
+        <Avatar className={classes.avatar} className={classes.purple}>
+          <LockOutlinedIcon />
+        </Avatar> */}
+        <img src={logo} alt="Logo" height={60} wigth={60} className={classes.margin}/>
 
-       <Typography component="h1" variant="h5">
-          Kirjaudu sisään       
-    </Typography> 
-    
+        <Typography component="h1" variant="h5">
+          Kirjaudu sisään
+    </Typography>
+
         <form onSubmit={login} className={classes.form} noValidate>
-          <TextField variant="outlined" margin="normal" required fullWidth id="email" label="Sähköpostiosoite"
+          <TextField variant="outlined" margin="normal" size="small" required fullWidth id="email" label="Sähköpostiosoite"
             name="email" /*autoComplete="email"*/ autoFocus value={email} onChange={(e) => handleEmail(e)}
           />
-          <TextField variant="outlined" margin="normal" required fullWidth name="password" label="Salasana"
+          <TextField variant="outlined" margin="normal" size="small" required fullWidth name="password" label="Salasana"
             type="password" id="password" /*autoComplete="current-password"*/ value={password} onChange={(e) =>
               handlePassword(e)}
           />
           <Grid container>
             <Grid item xs="6">
-<motion.div
-initial= {{ x: '-100vw' }}
-animate= {{ x: 0 }}
-transition= {{ delay: 1.5, duration: 1.5}}>
-              <ColorButton variant="contained" color="primary" className={classes.margin}>
-                Kirjaudu
+              <motion.div
+                initial={{ x: '-100vw' }}
+                animate={{ x: 0 }}
+                transition={{ delay: 1.5, duration: 1.5 }}>
+                <ColorButton variant="contained" color="primary" className={classes.margin}>
+                  Kirjaudu
       </ColorButton>
-</motion.div>
+              </motion.div>
             </Grid>
             <Grid item xs="6">
-<motion.div
-initial= {{ x: '-150vw' }}
-animate= {{ x: 0 }}
-transition= {{ delay: 2.5, duration: 1.5}}>
-              <ColorButton variant="contained" color="primary" className={classes.margin}>
-                Peruuta
+              <motion.div
+                initial={{ x: '-150vw' }}
+                animate={{ x: 0 }}
+                transition={{ delay: 2.5, duration: 1.5 }}>
+                <ColorButton variant="contained" color="primary" className={classes.margin}>
+                  Peruuta
       </ColorButton>
-</motion.div>
+              </motion.div>
             </Grid>
           </Grid>
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2">
+              <Link href="#" variant="body2" color="inherit">
                 Unohditko salasanasi?
               </Link>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="#" variant="body2" color="inherit">
                 {"Luo tunnukset täältä"}
               </Link>
             </Grid>
