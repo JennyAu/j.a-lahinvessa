@@ -1,18 +1,15 @@
 import React, { useState } from "react";
 import "../App.css";
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import { Grid } from "@material-ui/core";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles, withStyles, createMuiTheme } from '@material-ui/core/styles';
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { purple, deepPurple, pink} from '@material-ui/core/colors';
 import { motion } from "framer-motion"
 import logo from "../assets/logo.png"
-import { ThemeProvider } from "@material-ui/styles";
+import theme from '../theme'
 
 const Register = () => {
 
@@ -20,14 +17,10 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordAgain, setPasswordAgain] = useState("");
-  /*kayttajatunnus = muuttuja, johon tila tallennetaan
-    setKayttajatunnus = functio, jolla tilaa muutetaan
-    setKayttajatunnus('esimerkkiteksi') // nyt tila on seimerkkiteksti*/
 
   const handleUsername = (e) => {
     setUsername(e.target.value);
-  }; /*usernamen tila on nyt se mitä input kenttään syötetään*/
-
+  };
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
@@ -43,29 +36,7 @@ const Register = () => {
 
   const register = (e) => {
     e.preventDefault()
-    /* kutsutaan serviceä */
   };
-
-/*   const theme = createMuiTheme({
-    palette: {
-      primary: {
-        main: purple[500],
-      },
-      secondary: {
-        main: pink[500],
-      },
-    },
-  }); */
-
-  const ColorButton = withStyles((theme) => ({
-    root: {
-      color: theme.palette.getContrastText(purple[400]),
-      backgroundColor: purple[400],
-      '&:hover': {
-        backgroundColor: purple[800],
-      },
-    },
-  }))(Button);
 
   const useStyles = makeStyles((theme) => ({
     paper: {
@@ -74,11 +45,8 @@ const Register = () => {
       flexDirection: 'column',
       alignItems: 'center',
     },
-   /*  avatar: {
-      margin: theme.spacing(1),
-    }, */
     form: {
-      width: '100%', 
+      width: '100%',
       marginTop: theme.spacing(1),
     },
     submit: {
@@ -91,98 +59,93 @@ const Register = () => {
 
   const classes = useStyles();
 
-  console.log(username, email, password, passwordAgain);
-
   return (
     <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <motion.div 
-      animate={{ y: 30 }}
-      transition={{ delay: 0.2 }}
-      className={classes.paper}>
-      {/* <Avatar className={classes.avatar} className={classes.purple}>
-          <LockOutlinedIcon />
-        </Avatar> */}
-        <img src={logo} alt="Logo" height={60} wigth={60} className={classes.margin}/>
-        <Typography component="h1" variant="h5" className={classes.margin}>
-          Rekisteröidy
-        </Typography>
-        <form onSubmit={register} className={classes.form} noValidate>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            size="small"
-            required
-            fullWidth
-            id="email"
-            label="Käyttäjätunnus"
-            name="username"
-            autoFocus
-            value={username}
-            onChange={(e) => handleUsername(e)}
-          />
-          <TextField 
-            variant="outlined"
-            margin="normal"
-            size="small"
-            required
-            fullWidth
-            id="email"
-            label="Sähköpostiosoite"
-            name="email"
-            autoFocus
-            value={email}
-            onChange={(e) => handleEmail(e)}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            size="small"
-            required
-            fullWidth
-            name="password"
-            label="Salasana"
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => handlePassword(e)}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            size="small"
-            color="primary"
-            required
-            fullWidth
-            name="password"
-            label="Salasana uudelleen"
-            type="passwor"
-            id="passwordagain"
-            value={passwordAgain}
-            onChange={(e) => handlePasswordAgain(e)}
-          />
-          <Grid container spacing={10}>
-            <Grid item xs="6">
-             <motion.div
-             whileHover={{ scale: 1.2 }}
-             whileTap={{ scale: 1.2}}>
-          <ColorButton variant="contained" className={classes.margin}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <motion.div
+          animate={{ y: 30 }}
+          transition={{ delay: 0.2 }}
+          className={classes.paper}>
+          <img src={logo} alt="Logo" height={70} wigth={70} className={classes.margin} />
+          <Typography component="h1" variant="h5" className={classes.margin}>
             Rekisteröidy
-      </ColorButton>
-      </motion.div>
-      </Grid>
-      <Grid item xs="6">
-      <motion.div
-             whileHover={{ scale: 1.2 }}
-             whileTap={{ scale: 1.2}}> 
-      <ColorButton variant="contained" className={classes.margin}>
-            Peruuta
-      </ColorButton>
-      </motion.div>
-      </Grid>
-      </Grid>
-        </form>
-      </motion.div>
+        </Typography>
+          <form onSubmit={register} className={classes.form} noValidate>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              size="small"
+              required
+              fullWidth
+              id="email"
+              label="Käyttäjätunnus"
+              name="username"
+              value={username}
+              onChange={(e) => handleUsername(e)}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              size="small"
+              required
+              fullWidth
+              id="email"
+              label="Sähköpostiosoite"
+              name="email"
+              value={email}
+              onChange={(e) => handleEmail(e)}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              size="small"
+              required
+              fullWidth
+              name="password"
+              label="Salasana"
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => handlePassword(e)}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              size="small"
+              color="primary"
+              required
+              fullWidth
+              name="password"
+              label="Salasana uudelleen"
+              type="passwor"
+              id="passwordagain"
+              value={passwordAgain}
+              onChange={(e) => handlePasswordAgain(e)}
+            />
+            <Grid container spacing={10}>
+              <Grid item xs="6">
+                <motion.div
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 1.2 }}>
+                  <Button variant="contained" color="primary" className={classes.margin}>
+                    Rekisteröidy
+                  </Button>
+                </motion.div>
+              </Grid>
+              <Grid item xs="6">
+                <motion.div
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 1.2 }}>
+                  <Button variant="contained" color="primary" className={classes.margin}>
+                    Peruuta
+                </Button>
+                </motion.div>
+              </Grid>
+            </Grid>
+          </form>
+        </motion.div>
+      </ThemeProvider>
     </Container>
   );
 };

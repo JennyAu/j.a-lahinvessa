@@ -24,7 +24,7 @@ const Navigation = () => {
       // border: '1px solid red',
     },
     menuIcon: {
-      color: '#C0467B',
+      color: '#8127BA',
     },
   };
 
