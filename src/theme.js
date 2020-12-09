@@ -32,6 +32,13 @@ const theme = createMuiTheme({
         contrastText: '#000',
       },
     },
+    overrides: {
+        MuiButton: {
+          root: {
+            background: 'linear-gradient(to right top, #8127ba, #7547c0, #6d5cc1, #6c6dbf, #717cb9)',
+          },
+        },
+      },
   });
 
 export default theme
