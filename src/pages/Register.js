@@ -154,7 +154,7 @@ const Register = () => {
               value={passwordAgain}
               onChange={(e) => handlePasswordAgain(e)}
             />
-            <Grid container spacing={10}>
+            <Grid container spacing={3}>
               <Grid item xs="6">
                 <motion.div
                   whileHover={{ scale: 1.2 }}
