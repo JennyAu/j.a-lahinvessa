@@ -11,7 +11,9 @@ import NearestLocations from './components/NearestLocations';
 import SelectedLocation from './components/SelectedLocation';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Privacy from './pages/Privacy';
 import './App.css';
+
 
 const App = () => {
   const [userLocation, setUserLocation] = useState({
@@ -114,6 +116,9 @@ const App = () => {
       </Route>
       <Route path="/register">
         <Register />
+      </Route>
+      <Route path="/privacy">
+        <Privacy />
       </Route>
       <Route path="/" exact>
         <Map

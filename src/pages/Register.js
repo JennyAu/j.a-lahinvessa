@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import "../App.css";
-import Button from '@material-ui/core/Button';
-import { Grid } from "@material-ui/core";
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
+import {
+  Grid, TextField,
+  Typography, Container,
+  CssBaseline, Button,
+  InputAdornment,
+} from "@material-ui/core";
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
 import { motion } from "framer-motion"
 import logo from "../assets/logo.png"
 import theme from '../theme'
+import LockIcon from '@material-ui/icons/Lock';
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
+import PersonIcon from '@material-ui/icons/Person';
 
 const Register = () => {
 
@@ -73,6 +76,13 @@ const Register = () => {
         </Typography>
           <form onSubmit={register} className={classes.form} noValidate>
             <TextField
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <PersonIcon style={{ color: '#717CB9' }} />
+                  </InputAdornment>
+                ),
+              }}
               variant="outlined"
               margin="normal"
               size="small"
@@ -85,6 +95,13 @@ const Register = () => {
               onChange={(e) => handleUsername(e)}
             />
             <TextField
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <AccountBoxIcon style={{ color: '#717CB9' }} />
+                  </InputAdornment>
+                ),
+              }}
               variant="outlined"
               margin="normal"
               size="small"
@@ -97,6 +114,13 @@ const Register = () => {
               onChange={(e) => handleEmail(e)}
             />
             <TextField
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <LockIcon style={{ color: '#717CB9' }} />
+                  </InputAdornment>
+                ),
+              }}
               variant="outlined"
               margin="normal"
               size="small"
@@ -110,6 +134,13 @@ const Register = () => {
               onChange={(e) => handlePassword(e)}
             />
             <TextField
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <LockIcon style={{ color: '#717CB9' }} />
+                  </InputAdornment>
+                ),
+              }}
               variant="outlined"
               margin="normal"
               size="small"
