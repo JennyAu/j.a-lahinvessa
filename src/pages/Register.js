@@ -56,7 +56,7 @@ const Register = () => {
       margin: theme.spacing(3, 0, 2),
     },
     margin: {
-      marginTop: theme.spacing(2)
+      marginTop: theme.spacing(2),
     },
   }));
 
@@ -154,7 +154,7 @@ const Register = () => {
               value={passwordAgain}
               onChange={(e) => handlePasswordAgain(e)}
             />
-            <Grid container spacing={3}>
+            <Grid container>
               <Grid item xs="6">
                 <motion.div
                   whileHover={{ scale: 1.2 }}
@@ -164,7 +164,7 @@ const Register = () => {
                   </Button>
                 </motion.div>
               </Grid>
-              <Grid item xs="6">
+              <Grid style={{ paddingLeft: 43 }} item xs="6">
                 <motion.div
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 1.2 }}>

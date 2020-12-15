@@ -1,7 +1,11 @@
 /*purple(primary): #8127BA
 pink(secondary): #C0467B
 grey(info): #717CB9
-blue(success): #0A95A8*/
+blue(success): #0A95A8
+uusi väri #0A95A8 sininen
+*/
+
+
 
 import { createMuiTheme } from '@material-ui/core/styles';
 
@@ -33,12 +37,17 @@ const theme = createMuiTheme({
     },
   },
   overrides: {
-    MuiButton: {
-      root: {
-        background: 'linear-gradient(to right top, #8127ba, #7547c0, #6d5cc1, #6c6dbf, #717cb9)',
+      MuiButton: {
+        root: {
+          background: 'linear-gradient(to right top, #8127ba, #7547c0, #6d5cc1, #6c6dbf, #717cb9)',
+        },
       },
+      MuiCard: {
+      root: {
+        background: '#717CB9', 
+      }
     },
-  },
-});
+  }
+  });
 
 export default theme;
